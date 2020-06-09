@@ -1,4 +1,27 @@
 .HomeContainer{
+    margin-top: 5%;
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.inputAutoComplete{
+    width: 30%;
+}
+.inputAutoComplete input{
+    border: none;
+    background-color: #a6a6a6;
+    color: white;
+    transition: background-color 0.5s ease-out;
+}
+.inputAutoComplete input:hover{
+    background-color: #a6a6a6;
+    background-color:  #262626;
+    color: white;
+
+}
+.inputAutoComplete:hover{
+
 }

@@ -1,7 +1,6 @@
 import React from 'react'
 import classes from './Toolbar.module.css'
 import NavigationItems from '../navigationItems/NavigationItems'
-import SideDrawer from '../sideDrawer/SideDrawer'
 import Burger from './burger/Burger'
 
 const Toolbar=props=>(
