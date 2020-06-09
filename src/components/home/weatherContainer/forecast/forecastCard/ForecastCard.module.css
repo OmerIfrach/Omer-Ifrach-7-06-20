@@ -1,0 +1,14 @@
+.ForecastCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 5%;
+    width: 100px;
+    border: 1px solid black;
+    font-weight: 700;
+
+}
+
+.ForecastCard:hover{
+
+}

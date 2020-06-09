@@ -1,6 +1,5 @@
-import React,{useState,useEffect } from 'react'
+import React,{useState} from 'react'
 import classes from './Navbar.module.css'
-import NavigationItems from './navigationItems/NavigationItems'
 import Toolbar from './toolbar/Toolbar'
 import SideDrawer from './sideDrawer/SideDrawer'
 

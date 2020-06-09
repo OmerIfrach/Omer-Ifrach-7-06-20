@@ -4,9 +4,9 @@ import classes from './CurrWeather.module.css'
 
 const CurrWeather=props=>(
     <div className={classes.currWeather}>
-        <span>Israel</span>
-        <span>Tel Aviv</span>
-        <span></span>
+        <span>{props.currentCityLocation.countryName}</span>
+        <span>{props.currentCityLocation.cityName}</span>
+        <span>{props.currentCityWeather.Temperature.Imperial.Value}° {props.currentCityWeather.Temperature.Imperial.Unit}</span>
     </div>
 )
 
