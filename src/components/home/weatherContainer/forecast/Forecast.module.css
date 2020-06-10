@@ -13,7 +13,7 @@
 @media(max-width:800px){
     .Forecast{
         /* grid-template-columns: 1fr 1fr 1fr ; */
-        grid-auto-columns:minmax(200px,4fr)
+        /* grid-auto-columns:minmax(200px,4fr) */
 
         
     }
@@ -24,6 +24,7 @@
 @media(max-width:500px){
     .Forecast{
         grid-template-columns: 1fr;
+        justify-self: center;
         grid-template-rows: 1fr;
     }
 }

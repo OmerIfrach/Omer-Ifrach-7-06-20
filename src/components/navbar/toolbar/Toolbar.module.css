@@ -5,14 +5,18 @@
     justify-content: space-between;
     align-items: center;
     margin: auto;
+    color: white;
 }
 .ToolbarTitle{
-    font-size: large;
+    font-size: 15px;
     font-weight: bold;
 }
 
 @media(max-width:500px){
     .DesktopOnly{
         display: none;
+    }
+    .ToolbarTitle{
+        font-size: 12px;
     }
 }

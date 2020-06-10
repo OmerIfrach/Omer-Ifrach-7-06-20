@@ -5,3 +5,12 @@
     justify-content: space-around;
     align-items: center;
 }
+
+@media(max-width:500px){
+    .NavigationItems{
+        flex-direction: column;
+        width: fit-content;
+        height: 100%;
+        justify-content: flex-start;
+    }
+}

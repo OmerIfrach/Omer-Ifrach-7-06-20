@@ -9,7 +9,7 @@
     box-sizing: border-box;
     cursor: pointer;
     align-items: center;
-    padding: 8px 0;
+    padding: 6px 0;
 }
 
 
@@ -25,6 +25,6 @@
     width: 80%;
     height: 2px;
     background-color: white;
-    margin-top: 2px;
-    margin-bottom: 2px;
+    margin-top: 1px;
+    margin-bottom: 1px;
 }

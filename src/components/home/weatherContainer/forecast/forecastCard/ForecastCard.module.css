@@ -12,3 +12,9 @@
 .ForecastCard:hover{
 
 }
+
+@media(max-width:500px){
+    .ForecastCard{
+        width: 100%;
+    }
+}

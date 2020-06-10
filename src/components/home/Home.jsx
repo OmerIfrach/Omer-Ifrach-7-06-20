@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useCallback} from 'react'
 import classes from './Home.module.css'
 import axios from 'axios';
 import {connect} from 'react-redux'
@@ -6,7 +6,9 @@ import * as actionTypes from '../../store/actions'
 import {autoCompleteUrl,currentConditionsUrl,forecastsUrl} from '../../accuWeatherServices/generateUrl'
 import AutoComplete from './autoComplete/AutoComplete'
 import WeatherContainer from './weatherContainer/WeatherContainer'
+import ErrorModal from '../../UI/modal/ErrorModal'
 import queryString from 'query-string';
+
 
 const Home=props=>{
     const [autoCompleteText,setAutoCompleteText]=useState('');
@@ -20,6 +22,37 @@ const Home=props=>{
     });
     const [currentLocationForecast,setCurrentLocationForecast]=useState([]);
     const [isCurrentFavorite,setIsCurrentFavorite]=useState(false);
+    const [showErrorModal,setShowErrorModal]=useState({
+        show:false,
+        error:''
+    })
+
+    const getCityForecast=useCallback(()=>{
+        const locationKey=currentCityLocation.cityKey
+        const url = forecastsUrl(locationKey,props.temType)
+        axios.get(url)
+        .then(res=>{
+            console.log(res,'getCityForecast')
+            setCurrentLocationForecast(res.data.DailyForecasts)
+        })
+        .catch(err=>{
+            setShowErrorModal({
+                show:true,
+                error:'Failed to get data from server'
+            })
+        })
+    },[props.temType,currentCityLocation.cityKey])
+
+
+
+    const getCityWeatherAndForecast=useCallback((cityKey,newCityLocation)=>{
+        getCityWeatherByKey(cityKey,newCityLocation)
+        getCityForecast()
+    },[getCityForecast])
+
+    useEffect(()=>{
+        getCityForecast()
+    },[props.temType,getCityForecast])
 
     useEffect(()=>{
 
@@ -32,7 +65,7 @@ const Home=props=>{
         }
         setIsCurrentFavorite(res)
         
-    },[currentCityLocation,props.favorites])
+    },[currentCityLocation,props.favorites,getCityWeatherAndForecast])
 
     useEffect(()=>{
         const url=autoCompleteUrl(autoCompleteText)
@@ -46,10 +79,7 @@ const Home=props=>{
         }
     },[autoCompleteText])
 
-    const getCityWeatherAndForecast=(cityKey,newCityLocation)=>{
-        getCityWeatherByKey(cityKey,newCityLocation)
-        getCityForecast(cityKey)
-    }
+
 
     const getCityWeatherByKey=(cityKey,newCityLocation)=>{
         const url=currentConditionsUrl(cityKey)
@@ -62,24 +92,25 @@ const Home=props=>{
             }
         })
         .catch(err=>{
-            console.log('got error')
+            setShowErrorModal({
+                show:true,
+                error:'Failed to get data from server'
+            })
         })
     }
 
-    const getCityForecast=locationKey=>{
-        const url = forecastsUrl(locationKey)
-        axios.get(url)
-        .then(res=>{
-            console.log(res,'getCityForecast')
-            setCurrentLocationForecast(res.data.DailyForecasts)
-        })
-        .catch(err=>{
-            console.log('got error')
-        })
-    }
+
 
     const autoCompleteChangeHandler=(event)=>{
-        setAutoCompleteText(event.target.value)
+        if(/^[A-Za-z]*$/.test(event.target.value)){
+            setAutoCompleteText(event.target.value)
+        }
+        else{
+            setShowErrorModal({
+                show:true,
+                error:'Input can contain only english letters'
+            })
+        }
     }
     const updateIgnoreBlue=(toIgnore)=>{
         setIgnoreBlur(toIgnore)
@@ -115,9 +146,21 @@ const Home=props=>{
         }
 
     }
+    const dismissErrorModal=()=>{
+        setShowErrorModal({
+            show:false,
+            error:''
+        })
+    }
+
+    let homeStyle=[classes.HomeContainer,classes.HomeLightMode]
+    if(props.mode){
+        homeStyle=[classes.HomeContainer,classes.HomeDarkMode]
+    }
 
     return(
-        <div className={classes.HomeContainer}>
+        <div className={homeStyle.join(' ')}>
+            <ErrorModal show={showErrorModal.show} error={showErrorModal.error} clicked={dismissErrorModal}/>
             <AutoComplete 
                 autoCompleteText={autoCompleteText}
                 inputChange={autoCompleteChangeHandler}
@@ -129,6 +172,7 @@ const Home=props=>{
             {
                 currentCityWeather?
                 <WeatherContainer
+                temType={props.temType}
                 currentCityWeather={currentCityWeather}
                 currentCityLocation={currentCityLocation}
                 currentLocationForecast={currentLocationForecast}

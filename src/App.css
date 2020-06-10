@@ -1,6 +1,16 @@
 .App {
-  text-align: center;
   height: 100vh;
+  background-image: url("./assets/images/light_mode_background.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  text-align: center;
+}
+.App-Dark{
+  height: 100vh;
+  background-image: url("./assets/images/dark_mode_background.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  text-align: center;
 }
 
 .App-logo {

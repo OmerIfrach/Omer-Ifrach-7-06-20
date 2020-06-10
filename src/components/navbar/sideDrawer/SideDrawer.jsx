@@ -1,13 +1,20 @@
 import React,{Fragment } from 'react'
 import classes from './SideDrawer.module.css'
 import Backdrop from '../../../UI/backdrop/Backdrop'
-
+import NavigationItems from '../navigationItems/NavigationItems'
 
 const SideDrawer=props=>{
     let sideDrawerClasses=[classes.SideDrawer,classes.Close]
 
     if(props.show){
         sideDrawerClasses=[classes.SideDrawer,classes.Open]
+    }
+
+    if(props.mode){
+        sideDrawerClasses.push(classes.SideDrawerDarkMode)
+    }
+    else{
+        sideDrawerClasses.push(classes.SideDrawerLightMode)
     }
 
     
@@ -18,7 +25,7 @@ const SideDrawer=props=>{
                     <Backdrop show={props.show} clicked={props.toggleSideDrawer}/>
                     <div className={sideDrawerClasses.join(' ')}>
                     
-                        aaa
+                        <NavigationItems/>
                     </div>
                 </div>
 

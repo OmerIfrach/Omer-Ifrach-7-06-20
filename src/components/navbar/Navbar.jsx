@@ -11,10 +11,15 @@ const Navbar=props=>{
         setShowSideDrawer(!showSideDrawer)
     }
 
+    let navbarStyle=[classes.NavbarContainer,classes.NavbarLightMode]
+    if(props.mode){
+        navbarStyle=[classes.NavbarContainer,classes.NavbarDarkMode]
+    }
+
     return(
-        <div className={classes.NavbarContainer}>
-            <Toolbar toggleSideDrawer={toggleSideDrawer}/>
-            <SideDrawer toggleSideDrawer={toggleSideDrawer} show={showSideDrawer}/>
+        <div className={navbarStyle.join(' ')}>
+            <Toolbar toggleSideDrawer={toggleSideDrawer} />
+            <SideDrawer toggleSideDrawer={toggleSideDrawer} show={showSideDrawer} mode={props.mode}/>
         </div>
     )
 }

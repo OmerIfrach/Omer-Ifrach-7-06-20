@@ -1,6 +1,6 @@
 .SideDrawer{
     position: fixed;
-    width: 30%;
+    width: 40%;
     height: 100%;
     z-index: 150;
     left: 0;
@@ -10,6 +10,15 @@
     box-sizing: border-box;
     transition: transform 0.3s ease-out;
 }
+
+.SideDrawerLightMode{
+    background-color: #00ccff;
+}
+
+.SideDrawerDarkMode{
+    background-color: #00001a;
+}
+
 .Open{
     transform: translateX(0);
 }
@@ -18,8 +27,11 @@
 }
 
 
+
+
 @media(min-width:500px){
     .SideDrawer{
         display: none;
+        
     }
 }
