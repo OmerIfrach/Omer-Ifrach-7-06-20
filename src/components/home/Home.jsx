@@ -1,39 +1,38 @@
 import React,{useState,useEffect} from 'react'
 import classes from './Home.module.css'
 import axios from 'axios';
+import {connect} from 'react-redux'
+import * as actionTypes from '../../store/actions'
 import {autoCompleteUrl,currentConditionsUrl,forecastsUrl} from '../../accuWeatherServices/generateUrl'
 import AutoComplete from './autoComplete/AutoComplete'
 import WeatherContainer from './weatherContainer/WeatherContainer'
+import queryString from 'query-string';
 
 const Home=props=>{
-    const [autoCompleteText,setAutoCompleteText]=useState('')
-    const [ignoreBlur,setIgnoreBlur]=useState(false)
-    const [autoCompleteOptions,setAutoCompleteOptions]=useState([])
-    const [currentCityWeather,setCurrentCityWeather]=useState(null)
+    const [autoCompleteText,setAutoCompleteText]=useState('');
+    const [ignoreBlur,setIgnoreBlur]=useState(false);
+    const [autoCompleteOptions,setAutoCompleteOptions]=useState([]);
+    const [currentCityWeather,setCurrentCityWeather]=useState(null);
     const [currentCityLocation,setCurrentCityLocation]=useState({
         countryName:"Israel",
         cityName:"Tel Aviv",
         cityKey:'215854'
-    })
-    const [currentLocationForecast,setCurrentLocationForecast]=useState([])
-    const [isCurrentFavorite,setIsCurrentFavorite]=useState(false)
+    });
+    const [currentLocationForecast,setCurrentLocationForecast]=useState([]);
+    const [isCurrentFavorite,setIsCurrentFavorite]=useState(false);
 
     useEffect(()=>{
-        getCityWeatherAndForecast('215854')
 
-        let userPref=localStorage.getItem('userPrefrence')
-        if(userPref){
-            userPref=JSON.parse(userPref)
-            const isFavorite=userPref.favorites.find(locationKey=>locationKey===currentCityLocation.cityKey)
-            setIsCurrentFavorite(isFavorite?true:false)
+        let locationToQuery=currentCityLocation;
+        getCityWeatherAndForecast(locationToQuery.cityKey)
+        const newLocationIsFavorite=props.favorites.find(favoriteItem=>favoriteItem.cityKey===locationToQuery.cityKey);
+        let res=false
+        if(newLocationIsFavorite){
+            res=true
         }
-
-
-    },[])
-
-    // useEffect(()=>{
-
-    // },[isCurrentFavorite])
+        setIsCurrentFavorite(res)
+        
+    },[currentCityLocation,props.favorites])
 
     useEffect(()=>{
         const url=autoCompleteUrl(autoCompleteText)
@@ -55,12 +54,15 @@ const Home=props=>{
     const getCityWeatherByKey=(cityKey,newCityLocation)=>{
         const url=currentConditionsUrl(cityKey)
         axios.get(url)
-        .then(res=>{
+        .then((res)=>{
             console.log(res)
             setCurrentCityWeather(res.data[0])
             if(newCityLocation){
                 setCurrentCityLocation(newCityLocation)
             }
+        })
+        .catch(err=>{
+            console.log('got error')
         })
     }
 
@@ -70,6 +72,9 @@ const Home=props=>{
         .then(res=>{
             console.log(res,'getCityForecast')
             setCurrentLocationForecast(res.data.DailyForecasts)
+        })
+        .catch(err=>{
+            console.log('got error')
         })
     }
 
@@ -101,7 +106,13 @@ const Home=props=>{
     }
 
     const addToFavorite=()=>{
-        setIsCurrentFavorite(!isCurrentFavorite)
+        const favoriteItem={...currentCityLocation}
+        if(isCurrentFavorite){
+            props.onRemoveFromFavorite(favoriteItem.cityKey)
+        }
+        else{
+            props.onAddToFavorite(favoriteItem)
+        }
 
     }
 
@@ -130,4 +141,20 @@ const Home=props=>{
     );
 }
 
-export default Home
+const mapStateToProps=state=>{
+    return{
+        temType:state.temType,
+        mode:state.mode,
+        favorites:state.favorites
+    }
+}
+
+const mapDispatchToProps=dispatch=>{
+    return {
+        onAddToFavorite:(favoriteItem)=>dispatch({type:actionTypes.ADD_LOCATION_TO_FAVORITE,favoriteItem:favoriteItem}),
+        onRemoveFromFavorite:(cityKey)=>dispatch({type:actionTypes.REMOVE_LOCATION_FROM_FAVORITE,cityKey:cityKey})
+    }
+}
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Home)

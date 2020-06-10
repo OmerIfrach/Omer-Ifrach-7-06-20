@@ -7,6 +7,9 @@ const Toolbar=props=>(
 
     <header className={classes.ToolbarContainer}>
         <div className={classes.ToolbarTitle}>Herolo Weather Task</div>
+        <div>
+            Toogle
+        </div>
         <nav className={classes.DesktopOnly}>
             <NavigationItems/>
         </nav>
