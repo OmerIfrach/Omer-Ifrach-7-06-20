@@ -8,7 +8,7 @@ const Forecast=props=>(
     <div className={classes.Forecast}>
         {
             props.currentLocationForecast.map(forecast=>{
-                return <ForecastCard forecast={forecast} key={forecast.EpochDate}/>
+                return <ForecastCard forecast={forecast} key={forecast.EpochDate} mode={props.mode}/>
             })
         }
     </div>

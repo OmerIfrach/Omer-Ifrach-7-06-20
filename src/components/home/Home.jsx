@@ -26,6 +26,7 @@ const Home=props=>{
         show:false,
         error:''
     })
+    const [getQueryParameters,setGetQueryParameters]=useState(true)
 
     const getCityForecast=useCallback(()=>{
         const locationKey=currentCityLocation.cityKey
@@ -50,9 +51,16 @@ const Home=props=>{
         getCityForecast()
     },[getCityForecast])
 
+
     useEffect(()=>{
-        getCityForecast()
-    },[props.temType,getCityForecast])
+        if(getQueryParameters){
+            let queryParems=queryString.parse(props.location.search)
+            if(Object.keys(queryParems).length===3){
+                setGetQueryParameters(false)
+                setCurrentCityLocation(queryParems)
+            }
+        }
+    },[getQueryParameters,props.location.search])
 
     useEffect(()=>{
 
@@ -172,6 +180,7 @@ const Home=props=>{
             {
                 currentCityWeather?
                 <WeatherContainer
+                mode={props.mode}
                 temType={props.temType}
                 currentCityWeather={currentCityWeather}
                 currentCityLocation={currentCityLocation}

@@ -4,11 +4,11 @@
     justify-content: flex-start;
     padding: 5px 0;
     height: 10%;
+    box-shadow:0 0 3px 4px rgba(0, 0, 0, 0.5);
 }
 
 .NavbarLightMode{
     background-color: #00ccff;
-    border-bottom: 1px solid black;
 }
 
 .NavbarDarkMode{

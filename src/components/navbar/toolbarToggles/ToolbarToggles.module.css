@@ -1,0 +1,22 @@
+.ToolbarToggles{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.ToolbarToggles span{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 3%;
+    font-size: 12px;
+}
+
+@media(max-width:500px){
+    .ToolbarToggles{
+        margin: auto;
+        width: 80%;
+        color: white;
+    }
+}

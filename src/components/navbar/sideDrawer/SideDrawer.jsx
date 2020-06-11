@@ -2,6 +2,7 @@ import React,{Fragment } from 'react'
 import classes from './SideDrawer.module.css'
 import Backdrop from '../../../UI/backdrop/Backdrop'
 import NavigationItems from '../navigationItems/NavigationItems'
+import ToolbarToggles from '../toolbarToggles/ToolbarToggles'
 
 const SideDrawer=props=>{
     let sideDrawerClasses=[classes.SideDrawer,classes.Close]
@@ -26,6 +27,7 @@ const SideDrawer=props=>{
                     <div className={sideDrawerClasses.join(' ')}>
                     
                         <NavigationItems/>
+                        <ToolbarToggles/>
                     </div>
                 </div>
 

@@ -8,7 +8,7 @@ const WeatherContainer=props=>(
     <div className={classes.WeatherContainer} >
         <CurrWeather currentCityWeather={props.currentCityWeather} currentCityLocation={props.currentCityLocation} temType={props.temType}/>
         <ToggleFavorites currentCityLocation={props.currentCityLocation} isCurrentFavorite={props.isCurrentFavorite} addToFavorite={props.addToFavorite}/>
-        <Forecast currentLocationForecast={props.currentLocationForecast}/>
+        <Forecast currentLocationForecast={props.currentLocationForecast} mode={props.mode}/>
     </div>
 )
 

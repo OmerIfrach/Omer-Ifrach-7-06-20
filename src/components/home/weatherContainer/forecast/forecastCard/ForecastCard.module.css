@@ -4,13 +4,28 @@
     justify-content: space-around;
     margin: 5%;
     width: 100px;
-    border: 1px solid black;
+    border-radius: 5px ;
     font-weight: 700;
 
 }
 
 .ForecastCard:hover{
 
+}
+
+.ForecastLight{
+    box-shadow: 0 0 5px 2px black;
+    border: 1px solid black;
+}
+
+.ForecastDark{
+    box-shadow: 0 0 5px 2px white;
+    border: 1px solid white;
+}
+
+.ForecastCard img{
+    width: 80px;
+    align-self: center;
 }
 
 @media(max-width:500px){

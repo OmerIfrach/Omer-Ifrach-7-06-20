@@ -5,12 +5,15 @@ import {getWeatherIcon} from '../../../../../accuWeatherServices/generateUrl'
 const dayByIndex=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
 
 const ForecastCard=props=>{
-
+    // mode={props.mode} ForecastLight
     const dayToDisplay=dayByIndex[new Date(props.forecast.Date).getDay()]
-
+    let ForecastCardStyle=[classes.ForecastCard,classes.ForecastLight]
+    if(props.mode){
+        ForecastCardStyle=[classes.ForecastCard,classes.ForecastDark]
+    }
 
 return (
-    <div className={classes.ForecastCard}>
+    <div className={ForecastCardStyle.join(' ')}>
             <span>{dayToDisplay}</span>
             <span>{props.forecast.Day.IconPhrase}</span>
             <span>{props.forecast.Temperature.Maximum.Value}° | {props.forecast.Temperature.Minimum.Value}°</span>

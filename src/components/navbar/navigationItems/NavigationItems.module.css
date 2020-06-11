@@ -10,7 +10,7 @@
     .NavigationItems{
         flex-direction: column;
         width: fit-content;
-        height: 100%;
+        height: 15%;
         justify-content: flex-start;
     }
 }
