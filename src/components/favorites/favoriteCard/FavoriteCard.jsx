@@ -1,6 +1,7 @@
 import React from 'react'
 import classes from './FavoriteCard.module.css'
 import {getWeatherIcon} from '../../../accuWeatherServices/generateUrl'
+import Button from '../../../UI/button/Button'
 
 const FavoriteCard=props=>{
     let temData=`${props.favoriteData.Temperature.Imperial.Value}° ${props.favoriteData.Temperature.Imperial.Unit}`
@@ -8,18 +9,23 @@ const FavoriteCard=props=>{
         temData=`${props.favoriteData.Temperature.Metric.Value}° ${props.favoriteData.Temperature.Metric.Unit}`
     }
 
+    let FavoriteCardStyle=[classes.FavoriteCard,classes.FavoriteCardLightMode]
+    if(props.mode){
+        FavoriteCardStyle=[classes.FavoriteCard,classes.FavoriteCardDarkMode]
+    }
+
     const goToHomeWithLocation=()=>{
         props.history.push(`/?cityKey=${props.favoriteData.cityKey}&cityName=${props.favoriteData.cityName}&countryName=${props.favoriteData.countryName}`)
     }
 
     return(
-        <div className={classes.FavoriteCard}>
+        <div className={FavoriteCardStyle.join(' ')}>
             <span>{props.favoriteData.cityName}</span>
             <span>{props.favoriteData.WeatherText}</span>
             <span>{temData}</span>
             <img src={getWeatherIcon(props.favoriteData.WeatherIcon)} alt={props.favoriteData.WeatherText}/>
-            <button onClick={goToHomeWithLocation}>Show Forecast</button>
-            <button onClick={props.removeFromFavorites}>Remove</button>
+            <Button clicked={goToHomeWithLocation} type='primary'>Show Forecast</Button>
+            <Button clicked={props.removeFromFavorites} type='danger'>Remove</Button>
         </div>
     )
 }

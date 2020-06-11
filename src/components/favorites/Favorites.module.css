@@ -1,9 +1,16 @@
 .Favorites{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin-top: 5%;
 }
 
 .NoDataMessage{
     grid-column: 3;
     font-weight: bold;
+}
+
+@media(max-width:500px){
+    .Favorites{
+        grid-template-columns: 1fr 1fr;
+    }
 }

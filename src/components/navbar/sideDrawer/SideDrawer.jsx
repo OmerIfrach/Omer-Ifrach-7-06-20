@@ -25,7 +25,6 @@ const SideDrawer=props=>{
                 <div>
                     <Backdrop show={props.show} clicked={props.toggleSideDrawer}/>
                     <div className={sideDrawerClasses.join(' ')}>
-                    
                         <NavigationItems/>
                         <ToolbarToggles/>
                     </div>

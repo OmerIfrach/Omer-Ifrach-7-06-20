@@ -5,17 +5,16 @@ import {connect} from 'react-redux'
 import Navbar from './components/navbar/Navbar'
 import Home from './components/home/Home'
 import Favorites from './components/favorites/Favorites'
+import Background from './UI/background/Background'
 
 const App=(props)=> {
 
-  let appStyle='App'
-  if(props.mode){
-    appStyle='App-Dark'
-  }
+
 
   return (
     <Router>
-      <div className={appStyle}>
+      <div className='App'>
+        <Background mode={props.mode}/>
         <Navbar mode={props.mode}/>
         <Switch>
           <Route path='/' exact component={Home}/>

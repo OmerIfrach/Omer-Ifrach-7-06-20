@@ -3,15 +3,19 @@
     flex-direction: column;
     justify-content: space-around;
     margin: 5%;
-    width: 100px;
+    /* width: 200px; */
     border-radius: 5px ;
     font-weight: 700;
-
+    align-items: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
 
-.ForecastCard:hover{
-
+.ForecastCard span{
+    margin-bottom: 1%;
 }
+
+
 
 .ForecastLight{
     box-shadow: 0 0 5px 2px black;

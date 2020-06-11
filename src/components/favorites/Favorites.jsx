@@ -5,11 +5,15 @@ import * as actionTypes from '../../store/actions'
 import axios from 'axios';
 import { currentConditionsUrl } from '../../accuWeatherServices/generateUrl'
 import FavoriteCard from './favoriteCard/FavoriteCard'
-
+import ErrorModal from '../../UI/modal/ErrorModal'
 
 const Favorites = props => {
     const [currFavorites, setCurrFavorites] = useState(null)
- 
+    const [showErrorModal,setShowErrorModal]=useState({
+        show:false,
+        error:''
+    })
+
     const filterCurrFavorites = useCallback(() => {
         const userFavorites = props.favorites;
         const favoritesDataArr = []
@@ -39,6 +43,13 @@ const Favorites = props => {
             }
             setCurrFavorites(favoritesDataArr)
         }))
+        .catch(err=>{
+            setShowErrorModal({
+                show:true,
+               error:'Failed to get data from server'
+           })
+            
+        })
     },[props.favorites])
 
 
@@ -56,10 +67,16 @@ const Favorites = props => {
     const removeFromFavorites = (favoriteData) => {
         props.onRemoveFromFavorite(favoriteData.cityKey)
     }
+    const dismissErrorModal=()=>{
+        setShowErrorModal({
+            show:false,
+           error:''
+       })
+    }
 
     return (
         <div className={classes.Favorites}>
-
+            <ErrorModal show={showErrorModal.show} error={showErrorModal.error} clicked={dismissErrorModal}/>
             {
                 currFavorites && currFavorites.length !== 0 ?
                     currFavorites.map(favoriteData => {

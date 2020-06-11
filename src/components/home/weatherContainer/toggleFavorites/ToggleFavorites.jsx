@@ -4,13 +4,16 @@ import classes from './ToggleFavorites.module.css'
 
 
 const ToggleFavorites=props=>{
-    let btnText=`Add ${props.currentCityLocation.cityName} to Favorites`
+
+
+    let heartStyle=[classes.heart]
     if(props.isCurrentFavorite){
-        btnText=`Remove ${props.currentCityLocation.cityName} from Favorites`
+        heartStyle.push(classes.activated)
     }
+
     return(
         <div className={classes.ToggleFavorites}>
-            <button onClick={props.addToFavorite}>{btnText}</button>
+            <div className={heartStyle.join(' ')} onClick={props.addToFavorite}>❤</div>
         </div>
     )
 }

@@ -1,6 +1,7 @@
 import React,{Fragment} from 'react'
 import classes from './ErrorModal.module.css'
 import Backdrop from '../backdrop/Backdrop'
+import Button from '../button/Button'
 
 const Modal=props=>{
     let modalStyleClasses=[classes.ModalStyle,classes.Close];
@@ -18,7 +19,7 @@ const Modal=props=>{
             <div className={modalStyleClasses.join(' ')}>
                 <span className={classes.ModalTitle}>Error</span>
                 <span className={classes.ModalError}>{props.error}</span>
-                <button className={classes.ModalDismiss} onClick={props.clicked}>Dismiss</button>
+                <Button type='danger' clicked={props.clicked}>Dismiss</Button>
             </div>
 
     </Fragment>

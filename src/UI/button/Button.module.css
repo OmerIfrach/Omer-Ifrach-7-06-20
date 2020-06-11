@@ -1,0 +1,24 @@
+.primary{
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+    background-color: green;
+    color: white;
+}
+.primary:hover{
+    background-color: #003300;
+}
+
+.danger{
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+    background-color: red;
+    color: white;
+}
+
+.danger:hover{
+    background-color: #660000;
+}

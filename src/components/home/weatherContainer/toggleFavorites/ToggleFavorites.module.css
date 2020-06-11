@@ -1,4 +1,47 @@
 .ToggleFavorites{
     grid-column: 3;
     grid-row: 1;
+    display: flex;
+    align-items: center;
 }
+
+
+.heart {
+    width: min-content;
+    height: min-content;
+    color: #aaa;
+    font-size: 3em;
+    cursor: pointer;
+    position: relative;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .heart:before {
+    content: '❤';
+    position: absolute;
+    color: red;
+    opacity: 0;
+  }
+  .heart.activated {
+    color: red;
+  }
+  .heart.activated:before {
+    opacity: 0;
+    animation: reverse-pulse 1s linear;
+  }
+
+  @keyframes reverse-pulse {
+    0% {
+      opacity: 0;
+      transform: scale(1.8);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.4);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1);
+    }
+  }
