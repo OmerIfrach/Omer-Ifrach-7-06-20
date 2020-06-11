@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/Omer-Ifrach-7-06-20/static/css/main.55bc5953.chunk.css",
+    "main.js": "/Omer-Ifrach-7-06-20/static/js/main.5e9dace8.chunk.js",
+    "main.js.map": "/Omer-Ifrach-7-06-20/static/js/main.5e9dace8.chunk.js.map",
+    "runtime-main.js": "/Omer-Ifrach-7-06-20/static/js/runtime-main.0cce99dc.js",
+    "runtime-main.js.map": "/Omer-Ifrach-7-06-20/static/js/runtime-main.0cce99dc.js.map",
+    "static/js/2.04f00c3c.chunk.js": "/Omer-Ifrach-7-06-20/static/js/2.04f00c3c.chunk.js",
+    "static/js/2.04f00c3c.chunk.js.map": "/Omer-Ifrach-7-06-20/static/js/2.04f00c3c.chunk.js.map",
+    "index.html": "/Omer-Ifrach-7-06-20/index.html",
+    "precache-manifest.30e2e9fcdfe34b5b9dfd1a3d8fee5216.js": "/Omer-Ifrach-7-06-20/precache-manifest.30e2e9fcdfe34b5b9dfd1a3d8fee5216.js",
+    "service-worker.js": "/Omer-Ifrach-7-06-20/service-worker.js",
+    "static/css/main.55bc5953.chunk.css.map": "/Omer-Ifrach-7-06-20/static/css/main.55bc5953.chunk.css.map",
+    "static/js/2.04f00c3c.chunk.js.LICENSE.txt": "/Omer-Ifrach-7-06-20/static/js/2.04f00c3c.chunk.js.LICENSE.txt",
+    "static/media/Background.module.css": "/Omer-Ifrach-7-06-20/static/media/light_mode_background.8edc2765.jpg",
+    "static/media/light_mode_icon.png": "/Omer-Ifrach-7-06-20/static/media/light_mode_icon.782c0c0f.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0cce99dc.js",
+    "static/js/2.04f00c3c.chunk.js",
+    "static/css/main.55bc5953.chunk.css",
+    "static/js/main.5e9dace8.chunk.js"
+  ]
+}
