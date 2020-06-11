@@ -7,13 +7,18 @@
     margin: auto;
     color: white;
 }
+.NavbarTitleAndIcon{
+    display: flex;
+    flex-direction: row;
+}
 .ToolbarTitle{
     font-size: 15px;
     font-weight: bold;
+    align-self: center;
 }
 
 .ToolbarContainer div img{
-    width: 30px;
+    width: 25px;
 }
 .DesktopOnlyTogglersStyle{
     width: 20%;

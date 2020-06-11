@@ -18,7 +18,7 @@ const App=(props)=> {
         <Navbar mode={props.mode}/>
         <Switch>
           <Route path='/' exact component={Home}/>
-          <Route path='/favorites' exact component={Favorites}/>
+          <Route path='/favorites' component={Favorites}/>
         </Switch>
       </div>
     </Router>

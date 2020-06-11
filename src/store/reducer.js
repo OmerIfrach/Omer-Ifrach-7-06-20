@@ -48,7 +48,6 @@ const reducer=(state=initState,action)=>{
             localStorage.setItem('userPrefrence',JSON.stringify(newState))
             return newState;
         case actionTypes.REMOVE_LOCATION_FROM_FAVORITE:   
-        console.log(action.cityKey,'action.cityKey')
             newFavorites=state.favorites.filter(favoriteItem=>favoriteItem.cityKey!==action.cityKey);
             newState={
                 ...state,

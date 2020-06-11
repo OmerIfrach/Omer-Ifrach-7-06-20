@@ -3,12 +3,12 @@
     flex-direction: column;
     justify-content: space-around;
     margin: 5%;
-    /* width: 200px; */
     border-radius: 5px ;
     font-weight: 700;
     align-items: center;
     padding-top: 5%;
     padding-bottom: 5%;
+    text-align: center;
 }
 
 .ForecastCard span{

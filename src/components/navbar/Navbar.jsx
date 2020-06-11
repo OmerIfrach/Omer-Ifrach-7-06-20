@@ -23,8 +23,8 @@ const Navbar=props=>{
 
     return(
         <div className={navbarStyle.join(' ')}>
-            <Toolbar toggleSideDrawer={toggleSideDrawer} icon={iconOfNavbar} />
-            <SideDrawer toggleSideDrawer={toggleSideDrawer} show={showSideDrawer} mode={props.mode}/>
+            <Toolbar toggleSideDrawer={toggleSideDrawer} icon={iconOfNavbar}/>
+            <SideDrawer toggleSideDrawer={toggleSideDrawer} show={showSideDrawer} mode={props.mode} />
         </div>
     )
 }

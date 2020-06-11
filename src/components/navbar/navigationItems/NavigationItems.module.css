@@ -11,6 +11,8 @@
         flex-direction: column;
         width: fit-content;
         height: 15%;
+        align-items: center;
+        padding: 20%;
 
     }
 }

@@ -8,7 +8,7 @@ import Burger from './burger/Burger'
 const Toolbar=props=>(
 
     <header className={classes.ToolbarContainer}>
-        <div>
+        <div className={classes.NavbarTitleAndIcon}>
             <img src={props.icon} alt='navbarIcon'/>
             <div className={classes.ToolbarTitle}>Herolo Weather Task</div>
         </div>

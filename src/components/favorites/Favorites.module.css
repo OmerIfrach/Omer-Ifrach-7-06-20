@@ -10,6 +10,13 @@
     font-weight: bold;
 }
 
+
+@media(max-width:800px){
+    .Favorites{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
 @media(max-width:500px){
     .Favorites{
         grid-template-columns: 1fr 1fr;
