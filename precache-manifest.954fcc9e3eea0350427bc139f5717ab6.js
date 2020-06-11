@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a23aaee38199b9af1a488a5514458dd9",
+    "revision": "2f01218f12e372baa11e82fd0b1502f2",
     "url": "/Omer-Ifrach-7-06-20/index.html"
   },
   {
-    "revision": "e3fc28202ef8d30c470b",
+    "revision": "7a76edd3591926a55982",
     "url": "/Omer-Ifrach-7-06-20/static/css/main.55bc5953.chunk.css"
   },
   {
-    "revision": "ef0013f31415f4bced5b",
-    "url": "/Omer-Ifrach-7-06-20/static/js/2.04f00c3c.chunk.js"
+    "revision": "ba370d845a3360b5861f",
+    "url": "/Omer-Ifrach-7-06-20/static/js/2.c5d9a343.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/Omer-Ifrach-7-06-20/static/js/2.04f00c3c.chunk.js.LICENSE.txt"
+    "url": "/Omer-Ifrach-7-06-20/static/js/2.c5d9a343.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e3fc28202ef8d30c470b",
-    "url": "/Omer-Ifrach-7-06-20/static/js/main.5e9dace8.chunk.js"
+    "revision": "7a76edd3591926a55982",
+    "url": "/Omer-Ifrach-7-06-20/static/js/main.aa6f1169.chunk.js"
   },
   {
     "revision": "05858f4eae44185d4127",

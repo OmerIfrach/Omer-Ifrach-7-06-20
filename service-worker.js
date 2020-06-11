@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Omer-Ifrach-7-06-20/precache-manifest.30e2e9fcdfe34b5b9dfd1a3d8fee5216.js"
+  "/Omer-Ifrach-7-06-20/precache-manifest.954fcc9e3eea0350427bc139f5717ab6.js"
 );
 
 self.addEventListener('message', (event) => {
