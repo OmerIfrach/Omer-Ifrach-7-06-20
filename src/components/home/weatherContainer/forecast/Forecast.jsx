@@ -4,11 +4,11 @@ import ForecastCard from './forecastCard/ForecastCard'
 
 
 
-const Forecast=props=>(
+const Forecast = props => (
     <div className={classes.Forecast}>
         {
-            props.currentLocationForecast.map(forecast=>{
-                return <ForecastCard forecast={forecast} key={forecast.EpochDate} mode={props.mode}/>
+            props.currentLocationForecast.map(forecast => {
+                return <ForecastCard forecast={forecast} key={forecast.EpochDate} mode={props.mode} />
             })
         }
     </div>

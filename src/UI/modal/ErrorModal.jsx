@@ -1,20 +1,20 @@
-import React,{Fragment} from 'react'
+import React, { Fragment } from 'react'
 import classes from './ErrorModal.module.css'
 import Backdrop from '../backdrop/Backdrop'
 import Button from '../button/Button'
 
-const Modal=props=>{
-    let modalStyleClasses=[classes.ModalStyle,classes.Close];
+const Modal = props => {
+    let modalStyleClasses = [classes.ModalStyle, classes.Close];
 
-    if(props.show) {
-        modalStyleClasses=[classes.ModalStyle,classes.Open]
+    if (props.show) {
+        modalStyleClasses = [classes.ModalStyle, classes.Open]
     }
 
 
-    return(
+    return (
 
-    <Fragment>
-            <Backdrop show={props.show} clicked={props.clicked}/>
+        <Fragment>
+            <Backdrop show={props.show} clicked={props.clicked} />
 
             <div className={modalStyleClasses.join(' ')}>
                 <span className={classes.ModalTitle}>Error</span>
@@ -22,7 +22,8 @@ const Modal=props=>{
                 <Button type='danger' clicked={props.clicked}>Dismiss</Button>
             </div>
 
-    </Fragment>
-)};
+        </Fragment>
+    )
+};
 
 export default Modal

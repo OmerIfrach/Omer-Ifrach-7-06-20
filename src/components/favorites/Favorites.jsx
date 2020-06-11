@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useCallback } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import classes from './Favorites.module.css'
 import { connect } from 'react-redux'
 import * as actionTypes from '../../store/actions'
@@ -9,9 +9,9 @@ import ErrorModal from '../../UI/modal/ErrorModal'
 
 const Favorites = props => {
     const [currFavorites, setCurrFavorites] = useState(null)
-    const [showErrorModal,setShowErrorModal]=useState({
-        show:false,
-        error:''
+    const [showErrorModal, setShowErrorModal] = useState({
+        show: false,
+        error: ''
     })
 
     const filterCurrFavorites = useCallback(() => {
@@ -22,7 +22,7 @@ const Favorites = props => {
             if (found) favoritesDataArr.push(currFavorite);
         }
         setCurrFavorites(favoritesDataArr);
-    },[currFavorites,props.favorites])
+    }, [currFavorites, props.favorites])
 
     const getAllFavorites = useCallback(() => {
         const userFavorites = props.favorites;
@@ -43,14 +43,14 @@ const Favorites = props => {
             }
             setCurrFavorites(favoritesDataArr)
         }))
-        .catch(err=>{
-            setShowErrorModal({
-                show:true,
-               error:'Failed to get data from server'
-           })
-            
-        })
-    },[props.favorites])
+            .catch(err => {
+                setShowErrorModal({
+                    show: true,
+                    error: 'Failed to get data from server'
+                })
+
+            })
+    }, [props.favorites])
 
 
     useEffect(() => {
@@ -61,22 +61,28 @@ const Favorites = props => {
             filterCurrFavorites()
         }
 
-    }, [currFavorites, props.favorites,filterCurrFavorites,getAllFavorites])
+    }, [currFavorites, props.favorites, filterCurrFavorites, getAllFavorites])
 
 
     const removeFromFavorites = (favoriteData) => {
         props.onRemoveFromFavorite(favoriteData.cityKey)
     }
-    const dismissErrorModal=()=>{
+    const dismissErrorModal = () => {
         setShowErrorModal({
-            show:false,
-           error:''
-       })
+            show: false,
+            error: ''
+        })
+    }
+
+    let NoDataMessageClasses = [classes.NoDataMessage, classes.NoDataMessageLight]
+
+    if (props.mode) {
+        NoDataMessageClasses = [classes.NoDataMessage, classes.NoDataMessageDark]
     }
 
     return (
         <div className={classes.Favorites}>
-            <ErrorModal show={showErrorModal.show} error={showErrorModal.error} clicked={dismissErrorModal}/>
+            <ErrorModal show={showErrorModal.show} error={showErrorModal.error} clicked={dismissErrorModal} />
             {
                 currFavorites && currFavorites.length !== 0 ?
                     currFavorites.map(favoriteData => {
@@ -88,7 +94,7 @@ const Favorites = props => {
                             removeFromFavorites={() => { removeFromFavorites(favoriteData) }} />
                     })
 
-                    : <div className={classes.NoDataMessage}>No favorite to display</div>
+                    : <div className={NoDataMessageClasses.join(' ')}>No favorite to display</div>
             }
         </div>
     )

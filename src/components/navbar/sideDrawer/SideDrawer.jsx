@@ -1,36 +1,33 @@
-import React,{Fragment } from 'react'
+import React, { Fragment } from 'react'
 import classes from './SideDrawer.module.css'
 import Backdrop from '../../../UI/backdrop/Backdrop'
 import NavigationItems from '../navigationItems/NavigationItems'
 import ToolbarToggles from '../toolbarToggles/ToolbarToggles'
 
-const SideDrawer=props=>{
-    let sideDrawerClasses=[classes.SideDrawer,classes.Close]
+const SideDrawer = props => {
+    let sideDrawerClasses = [classes.SideDrawer, classes.Close]
 
-    if(props.show){
-        sideDrawerClasses=[classes.SideDrawer,classes.Open]
+    if (props.show) {
+        sideDrawerClasses = [classes.SideDrawer, classes.Open]
     }
 
-    if(props.mode){
+    if (props.mode) {
         sideDrawerClasses.push(classes.SideDrawerDarkMode)
     }
-    else{
+    else {
         sideDrawerClasses.push(classes.SideDrawerLightMode)
     }
 
-    
-    return(
+
+    return (
         <Fragment>
-
-                <div>
-                    <Backdrop show={props.show} clicked={props.toggleSideDrawer}/>
-                    <div className={sideDrawerClasses.join(' ')}>
-                        <NavigationItems/>
-                        <ToolbarToggles/>
-                    </div>
+            <div>
+                <Backdrop show={props.show} clicked={props.toggleSideDrawer} />
+                <div className={sideDrawerClasses.join(' ')}>
+                    <NavigationItems />
+                    <ToolbarToggles />
                 </div>
-
-
+            </div>
         </Fragment>
     )
 }
