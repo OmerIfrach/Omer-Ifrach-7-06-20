@@ -3,7 +3,7 @@ import classes from './Home.module.css'
 import axios from 'axios';
 import {connect} from 'react-redux'
 import * as actionTypes from '../../store/actions'
-import {autoCompleteUrl,currentConditionsUrl,forecastsUrl} from '../../accuWeatherServices/generateUrl'
+import {autoCompleteUrl,currentConditionsUrl,forecastsUrl,getLocationByGeoPosition} from '../../accuWeatherServices/generateUrl'
 import AutoComplete from './autoComplete/AutoComplete'
 import WeatherContainer from './weatherContainer/WeatherContainer'
 import ErrorModal from '../../UI/modal/ErrorModal'
@@ -15,11 +15,7 @@ const Home=props=>{
     const [ignoreBlur,setIgnoreBlur]=useState(false);
     const [autoCompleteOptions,setAutoCompleteOptions]=useState([]);
     const [currentCityWeather,setCurrentCityWeather]=useState(null);
-    const [currentCityLocation,setCurrentCityLocation]=useState({
-        countryName:"Israel",
-        cityName:"Tel Aviv",
-        cityKey:'215854'
-    });
+    const [currentCityLocation,setCurrentCityLocation]=useState(null);
     const [currentLocationForecast,setCurrentLocationForecast]=useState([]);
     const [isCurrentFavorite,setIsCurrentFavorite]=useState(false);
     const [showErrorModal,setShowErrorModal]=useState({
@@ -29,21 +25,44 @@ const Home=props=>{
     const [getQueryParameters,setGetQueryParameters]=useState(true)
 
     const getCityForecast=useCallback(()=>{
-        const locationKey=currentCityLocation.cityKey
-        const url = forecastsUrl(locationKey,props.temType)
-        axios.get(url)
-        .then(res=>{
-            console.log(res,'getCityForecast')
-            setCurrentLocationForecast(res.data.DailyForecasts)
-        })
-        .catch(err=>{
-            setShowErrorModal({
-                show:true,
-                error:'Failed to get data from server'
+        if(currentCityLocation!==null){
+            const locationKey=currentCityLocation.cityKey
+            const url = forecastsUrl(locationKey,props.temType)
+            axios.get(url)
+            .then(res=>{
+                console.log(res,'getCityForecast')
+                setCurrentLocationForecast(res.data.DailyForecasts)
             })
-        })
-    },[props.temType,currentCityLocation.cityKey])
-
+            .catch(err=>{
+                setShowErrorModal({
+                    show:true,
+                    error:'Failed to get data from server'
+                })
+            })
+        }
+    },[props.temType,currentCityLocation])
+    useEffect(()=>{
+        const queryParems=queryString.parse(props.location.search)
+        if(currentCityLocation===null&&Object.keys(queryParems).length===0){
+            let url=getLocationByGeoPosition(32.0853, 34.7818)
+            axios.get(url)
+            .then(res=>{
+                const locationData=res.data
+                const currentCityData={
+                    countryName:locationData.Country.LocalizedName,
+                    cityName:locationData.ParentCity.LocalizedName,
+                    cityKey:locationData.Key
+                }
+                setCurrentCityLocation(currentCityData)
+            })
+            .catch(err=>{
+                setShowErrorModal({
+                    show:true,
+                    error:'Failed to get data from server'
+                })
+            })
+        }
+    },[currentCityLocation,props.location.search])
 
 
     const getCityWeatherAndForecast=useCallback((cityKey,newCityLocation)=>{
@@ -63,15 +82,17 @@ const Home=props=>{
     },[getQueryParameters,props.location.search])
 
     useEffect(()=>{
-
-        let locationToQuery=currentCityLocation;
-        getCityWeatherAndForecast(locationToQuery.cityKey)
-        const newLocationIsFavorite=props.favorites.find(favoriteItem=>favoriteItem.cityKey===locationToQuery.cityKey);
-        let res=false
-        if(newLocationIsFavorite){
-            res=true
+        if(currentCityLocation!==null){
+            
+            let locationToQuery=currentCityLocation;
+            getCityWeatherAndForecast(locationToQuery.cityKey)
+            const newLocationIsFavorite=props.favorites.find(favoriteItem=>favoriteItem.cityKey===locationToQuery.cityKey);
+            let res=false
+            if(newLocationIsFavorite){
+                res=true
+            }
+            setIsCurrentFavorite(res)
         }
-        setIsCurrentFavorite(res)
         
     },[currentCityLocation,props.favorites,getCityWeatherAndForecast])
 

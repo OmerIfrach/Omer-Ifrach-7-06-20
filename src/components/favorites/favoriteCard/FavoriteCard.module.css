@@ -6,7 +6,7 @@
     border-radius: 5px;
     margin: 3%;
     padding: 3%;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .FavoriteCardLightMode{

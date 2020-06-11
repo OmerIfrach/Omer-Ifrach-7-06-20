@@ -12,7 +12,7 @@ const Toolbar=props=>(
             <img src={props.icon} alt='navbarIcon'/>
             <div className={classes.ToolbarTitle}>Herolo Weather Task</div>
         </div>
-        <nav className={classes.DesktopOnly}>
+        <nav className={[classes.DesktopOnly,classes.DesktopOnlyTogglersStyle].join(' ')}>
             <ToolbarToggles/>
         </nav>
         <nav className={classes.DesktopOnly}>
@@ -23,3 +23,4 @@ const Toolbar=props=>(
 );
 
 export default Toolbar
+

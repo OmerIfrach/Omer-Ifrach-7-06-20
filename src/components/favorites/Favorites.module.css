@@ -1,7 +1,8 @@
 .Favorites{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    margin-top: 5%;
+
+    margin: 5%;
 }
 
 .NoDataMessage{

@@ -32,8 +32,21 @@
     align-self: center;
 }
 
+
+@media(max-width:800px){
+    .ForecastCard{
+        font-size: 13px;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        margin: 8%;
+    }
+}
+
 @media(max-width:500px){
     .ForecastCard{
-        width: 100%;
+        width: 80%;
+        align-self: center;
+        padding-top: 3%;
+        padding-bottom: 3%;
     }
 }

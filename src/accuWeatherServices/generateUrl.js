@@ -23,3 +23,7 @@ export const getWeatherIcon=iconNum=>{
 
     return `https://developer.accuweather.com/sites/default/files/${iconNum}-s.png`
 }
+
+export const getLocationByGeoPosition=(lat,long)=>{
+    return `http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${apiKey}&q=${lat},${long}`
+}

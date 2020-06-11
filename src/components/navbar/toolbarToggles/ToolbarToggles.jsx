@@ -4,22 +4,23 @@ import {connect} from 'react-redux'
 import * as actionTypes from '../../../store/actions'
 import Switch from "react-switch";
 
-const toggleSettingsMode={
-    offColor:'#00001a',
-    onColor:'#00ccff',
+const toggleBasicSettings={
     uncheckedIcon:false,
     checkedIcon:false,
     width:28,
     height:14
 }
 
+const toggleSettingsMode={
+    offColor:'#00001a',
+    onColor:'#00ccff',
+    ...toggleBasicSettings
+}
+
 const toggleSettingsTemType={
     offColor:'#808080',
     onColor:'#2185d0',
-    uncheckedIcon:false,
-    checkedIcon:false,
-    width:28,
-    height:14
+    ...toggleBasicSettings
 }
 
 const ToolbarToggles=props=>(

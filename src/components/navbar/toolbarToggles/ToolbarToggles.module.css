@@ -8,7 +8,7 @@
 .ToolbarToggles span{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 3%;
     font-size: 12px;
 }

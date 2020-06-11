@@ -15,6 +15,9 @@
 .ToolbarContainer div img{
     width: 30px;
 }
+.DesktopOnlyTogglersStyle{
+    width: 20%;
+}
 
 @media(max-width:500px){
     .DesktopOnly{
