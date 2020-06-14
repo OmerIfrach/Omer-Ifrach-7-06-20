@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Omer-Ifrach-7-06-20/static/css/main.55bc5953.chunk.css",
-    "main.js": "/Omer-Ifrach-7-06-20/static/js/main.aa6f1169.chunk.js",
-    "main.js.map": "/Omer-Ifrach-7-06-20/static/js/main.aa6f1169.chunk.js.map",
+    "main.js": "/Omer-Ifrach-7-06-20/static/js/main.fbd62122.chunk.js",
+    "main.js.map": "/Omer-Ifrach-7-06-20/static/js/main.fbd62122.chunk.js.map",
     "runtime-main.js": "/Omer-Ifrach-7-06-20/static/js/runtime-main.0cce99dc.js",
     "runtime-main.js.map": "/Omer-Ifrach-7-06-20/static/js/runtime-main.0cce99dc.js.map",
     "static/js/2.c5d9a343.chunk.js": "/Omer-Ifrach-7-06-20/static/js/2.c5d9a343.chunk.js",
     "static/js/2.c5d9a343.chunk.js.map": "/Omer-Ifrach-7-06-20/static/js/2.c5d9a343.chunk.js.map",
     "index.html": "/Omer-Ifrach-7-06-20/index.html",
-    "precache-manifest.954fcc9e3eea0350427bc139f5717ab6.js": "/Omer-Ifrach-7-06-20/precache-manifest.954fcc9e3eea0350427bc139f5717ab6.js",
+    "precache-manifest.de3b07f919cfa0192cdaab57544597d3.js": "/Omer-Ifrach-7-06-20/precache-manifest.de3b07f919cfa0192cdaab57544597d3.js",
     "service-worker.js": "/Omer-Ifrach-7-06-20/service-worker.js",
     "static/css/main.55bc5953.chunk.css.map": "/Omer-Ifrach-7-06-20/static/css/main.55bc5953.chunk.css.map",
     "static/js/2.c5d9a343.chunk.js.LICENSE.txt": "/Omer-Ifrach-7-06-20/static/js/2.c5d9a343.chunk.js.LICENSE.txt",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.0cce99dc.js",
     "static/js/2.c5d9a343.chunk.js",
     "static/css/main.55bc5953.chunk.css",
-    "static/js/main.aa6f1169.chunk.js"
+    "static/js/main.fbd62122.chunk.js"
   ]
 }
