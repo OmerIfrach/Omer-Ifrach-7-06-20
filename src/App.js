@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Switch, Route, HashRouter } from "react-router-dom";
 import './App.css';
 import { connect } from 'react-redux'
 import Navbar from './components/navbar/Navbar'
@@ -9,7 +9,7 @@ import Background from './UI/background/Background'
 
 const App = (props) => {
   return (
-    <Router>
+    <HashRouter basename="/Omer-Ifrach-7-06-20">
       <div className='App'>
         <Background mode={props.mode} />
         <Navbar mode={props.mode} />
@@ -18,7 +18,7 @@ const App = (props) => {
           <Route path='/favorites' component={Favorites} />
         </Switch>
       </div>
-    </Router>
+    </HashRouter>
   );
 }
 const mapStateToProps = state => {
